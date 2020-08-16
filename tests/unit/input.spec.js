@@ -7,7 +7,7 @@ describe("TodoInput.vue", () => {
     expect(wrapper.props("type")).toMatch("text");
   });
 
-  it("should have type checkbox if it's implicit", () => {
+  it("should have type checkbox if it's explicit", () => {
     const wrapper = shallowMount(TodoInput, {
       propsData: {
         type: "checkbox"
@@ -35,5 +35,25 @@ describe("TodoInput.vue", () => {
       }
     });
     expect(wrapper.props("value")).toMatch(inputValue);
+  });
+
+  it("should have checked true if it's true", () => {
+    const wrapper = shallowMount(TodoInput, {
+      propsData: {
+        type: "checkbox",
+        checked: true
+      }
+    });
+    expect(wrapper.props("checked")).toBeTruthy();
+  });
+
+  it("should have checked false if it's true", () => {
+    const wrapper = shallowMount(TodoInput, {
+      propsData: {
+        type: "checkbox",
+        checked: false
+      }
+    });
+    expect(wrapper.props("checked")).toBeFalsy();
   });
 });

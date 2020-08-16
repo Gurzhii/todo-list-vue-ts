@@ -21,8 +21,8 @@ export default class TodoInput extends Vue {
   @Prop({ default: "Placeholder" }) readonly placeholder!: string;
   @Prop({ default: "text" }) readonly type!: string;
   @Prop({ default: false }) readonly checked!: boolean;
-
-  onClick() {
+  // @ts-ignore
+  onClick(event) {
     this.$emit("onClick", event);
   }
   // @ts-ignore
