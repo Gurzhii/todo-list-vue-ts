@@ -4,23 +4,17 @@ import { TaskRawData } from "./../interfaces";
 const defaultValues = { title: "", isCompleted: false };
 
 export class TaskModel extends BaseModel implements TaskRawData {
-  id: string;
-  isCompleted: boolean;
-  title: string;
+  id?: string;
+  isCompleted?: boolean;
+  title?: string;
 
   constructor(params: TaskRawData = defaultValues) {
     super();
-
-    this.id = params.id!;
-    this.deletedAt = params.deletedAt!;
-    this.createdAt = params.createdAt!;
-    this.isCompleted = params.isCompleted!;
-    this.title = params.title!;
-    this.updatedAt = params.updatedAt!;
+    Object.assign(this, params);
   }
 
   get isValid() {
-    return this.title.trim() !== "";
+    return this.title && this.title.trim() !== "";
   }
 
   get isInvalid() {
