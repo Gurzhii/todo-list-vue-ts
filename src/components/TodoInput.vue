@@ -7,7 +7,7 @@
     :checked="checked"
     :value="value"
     @click="onClick"
-    @input="onInput"
+    @input="onInput($event.target.value)"
   />
 </template>
 
@@ -21,11 +21,11 @@ export default class TodoInput extends Vue {
   @Prop({ default: "Placeholder" }) readonly placeholder!: string;
   @Prop({ default: "text" }) readonly type!: string;
   @Prop({ default: false }) readonly checked!: boolean;
-  onClick(event: HTMLInputElement) {
-    this.$emit("onClick", event);
+  onClick() {
+    this.$emit("onClick");
   }
-  onInput(event: { target: HTMLInputElement }) {
-    this.$emit("update:value", event.target.value);
+  onInput(value: string) {
+    this.$emit("update:value", value);
   }
 }
 </script>

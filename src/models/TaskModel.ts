@@ -13,11 +13,11 @@ export class TaskModel extends BaseModel implements TaskRawData {
     Object.assign(this, params);
   }
 
-  get isValid() {
-    return this.title && this.title.trim() !== "";
+  get isValid(): boolean {
+    return this.title !== undefined && this.title.trim() !== "";
   }
 
-  get isInvalid() {
+  get isInvalid(): boolean {
     return !this.isValid;
   }
 }
